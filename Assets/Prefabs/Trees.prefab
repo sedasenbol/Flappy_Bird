@@ -13,7 +13,9 @@ GameObject:
   - component: {fileID: 8377340904526799871}
   - component: {fileID: 6725002310345080870}
   - component: {fileID: 4478804984087817820}
-  - component: {fileID: 1847549472525228895}
+  - component: {fileID: -1631931487931634974}
+  - component: {fileID: -3549130678256351855}
+  - component: {fileID: -1510114271837077774}
   m_Layer: 0
   m_Name: Trees
   m_TagString: Obstacle
@@ -96,7 +98,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
+  m_SelectedEditorRenderState: 0
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
@@ -104,7 +106,37 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &1847549472525228895
+--- !u!54 &-1631931487931634974
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3041290668301091255}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!64 &-3549130678256351855
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3041290668301091255}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 6391508031547175954, guid: 52b760f00de81fd4fa4e0d3db1f1830c, type: 3}
+--- !u!65 &-1510114271837077774
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -112,8 +144,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3041290668301091255}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.18199895, y: 14.742583, z: 1.9860773}
-  m_Center: {x: -0.3587189, y: 7.3712916, z: -0.3075577}
+  m_Size: {x: 0.19303276, y: 14.742583, z: 1.9860773}
+  m_Center: {x: -0.37255147, y: 7.3712916, z: -0.3075577}
