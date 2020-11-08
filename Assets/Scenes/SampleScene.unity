@@ -133,6 +133,20 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 7762271330320411905}
   m_PrefabAsset: {fileID: 0}
+--- !u!64 &253289821
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 253289820}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
 --- !u!135 &253289825
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -142,7 +156,7 @@ SphereCollider:
   m_GameObject: {fileID: 253289820}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.12
   m_Center: {x: 0, y: 0, z: 0}
@@ -863,6 +877,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2425863613262327245, guid: 3f052402f9f79b740a94005c1b6f0bb9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2841880128912674366, guid: 3f052402f9f79b740a94005c1b6f0bb9,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7762271330135345245, guid: 3f052402f9f79b740a94005c1b6f0bb9,
         type: 3}
       propertyPath: m_Name
