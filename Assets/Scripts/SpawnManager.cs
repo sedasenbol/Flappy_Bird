@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpawnManager : MonoBehaviour
 {
-    private float treeDensity = 6f;
+    private float treeDistance = 4f;
     [SerializeField]
     private GameObject treePrefab;
     [SerializeField]
@@ -15,6 +15,8 @@ public class SpawnManager : MonoBehaviour
     private GameObject coinContainer;
     private GameObject player;
     private int spawnedTreeCount=0;
+    private float previousTreeRandomizer = 0f;
+    private float treeRandomizer;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,15 +30,18 @@ public class SpawnManager : MonoBehaviour
     }
     private void SpawnTreeAndCoin()
     {
-        if(player.transform.position.x >= spawnedTreeCount * treeDensity-20)
+        if (player.transform.position.x >= spawnedTreeCount * treeDistance - 20f)
         {
-            float treeRandomizer = Random.Range(-3, 4);
-            GameObject spawnedTreeUp1 = Instantiate(treePrefab, new Vector3(-10+spawnedTreeCount*treeDensity, 29+ treeRandomizer, 0), Quaternion.Euler(0, 0, 180));
-            GameObject spawnedTreeDown1 = Instantiate(treePrefab,new Vector3(-5+spawnedTreeCount*treeDensity,-29 + treeRandomizer, 0),Quaternion.identity);
+            float upperBound = Mathf.Min(previousTreeRandomizer + 2f, 2f);
+            float lowerBound = Mathf.Max(previousTreeRandomizer - 2f, -2f);
+            treeRandomizer = Random.Range(lowerBound,upperBound);
+            GameObject spawnedTreeUp = Instantiate(treePrefab, new Vector3(-10+spawnedTreeCount*treeDistance, 29f + treeRandomizer, 0f), Quaternion.Euler(0, 0, 180));
+            GameObject spawnedTreeDown = Instantiate(treePrefab,new Vector3(-5+spawnedTreeCount* treeDistance, -29f + treeRandomizer, 0f),Quaternion.identity);
             //GameObject spawnedCoin = Instantiate(coinPrefab, new Vector3(4.5f+spawnedTreeCount*treeDensity,treeRandomizer,0),Quaternion.identity);
             //spawnedCoin.transform.parent = coinContainer.transform;
-            spawnedTreeUp1.transform.parent = treeContainer.transform;
-            spawnedTreeDown1.transform.parent = treeContainer.transform;
+            previousTreeRandomizer = treeRandomizer;
+            spawnedTreeUp.transform.parent = treeContainer.transform;
+            spawnedTreeDown.transform.parent = treeContainer.transform;
             spawnedTreeCount++;
         }
     }
