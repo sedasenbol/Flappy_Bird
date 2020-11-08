@@ -4,37 +4,53 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private bool isAlive = true;
     private Rigidbody rb;
     private float moveForwardSpeed = 0.05f;
-    private float Force = 20f;
-    private GameManager gameManager;
+    private float force = 250f;
+    private int score;
+    private TreeScript treeScript;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        gameManager = GameObject.Find("Game_Manager").GetComponent<GameManager>();
+        treeScript = GameObject.FindGameObjectWithTag("Obstacle").GetComponent<TreeScript>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (isAlive)
         {
-            MoveVertical();
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                MoveVertical();
+            }
+            MoveForward();
         }
-        MoveForward();
     }
     private void MoveForward()
     {
-        transform.position = new Vector3(transform.position.x+moveForwardSpeed,transform.position.y,transform.position.z);
+        transform.position = new Vector3(transform.position.x + moveForwardSpeed, transform.position.y, transform.position.z);
     }
     private void MoveVertical()
     {
         rb.velocity = Vector3.zero;
-        rb.AddForce(Vector2.up * 250f, ForceMode.Force);
+        rb.AddForce(Vector2.up * force, ForceMode.Force);
     }
     private void OnTriggerEnter(Collider other)
     {
-        gameManager.GameOver();
+        isAlive = false;
+        Physics.gravity = new Vector3(0, 0, 0);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        isAlive = false;
+        Physics.gravity = new Vector3(0, 0, 0);
+    }
+    private void GameOver()
+    {
+        isAlive = false;
+        treeScript.GameOver();
     }
 }

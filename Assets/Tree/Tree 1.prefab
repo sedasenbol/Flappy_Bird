@@ -7,10 +7,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8702238848824006579, guid: 2c6bc3f6206f7a748876f05540b8ef50,
+        type: 3}
+      propertyPath: m_Convex
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8702238848824006579, guid: 2c6bc3f6206f7a748876f05540b8ef50,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 6391508031547175954}
+    - target: {fileID: -8702238848824006579, guid: 2c6bc3f6206f7a748876f05540b8ef50,
+        type: 3}
+      propertyPath: m_CookingOptions
+      value: -1
+      objectReference: {fileID: 0}
     - target: {fileID: 3041290668301091255, guid: 2c6bc3f6206f7a748876f05540b8ef50,
         type: 3}
       propertyPath: m_Name
-      value: Tree_Down
+      value: Tree 1
       objectReference: {fileID: 0}
     - target: {fileID: 4305583055077049677, guid: 2c6bc3f6206f7a748876f05540b8ef50,
         type: 3}
