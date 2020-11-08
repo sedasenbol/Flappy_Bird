@@ -12,14 +12,17 @@ public class Player : MonoBehaviour
     private TreeScript treeScript;
     private Quaternion downRotation;
     private Quaternion forwardRotation;
-    private float rotationSmoothness=1f;
-    private UIManager uIManager; 
+    private float rotationSmoothness=1.5f;
+    private UIManager uIManager;
+    private bool isFlying = false;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         treeScript = GameObject.FindGameObjectWithTag("Obstacle").GetComponent<TreeScript>();
         uIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
+        Physics.gravity = new Vector3(0,20,0);
+
     }
 
     // Update is called once per frame
@@ -27,12 +30,16 @@ public class Player : MonoBehaviour
     {
         if (isAlive)
         {
+            downRotation = Quaternion.Euler(0, 0, -120);
             if (Input.GetKeyDown(KeyCode.Space))
             {
+                isFlying = true;
                 MoveVertical();
             }
-            downRotation = Quaternion.Euler(0, 0, -90);
-            transform.rotation = Quaternion.Lerp(transform.rotation, downRotation, rotationSmoothness*Time.deltaTime);
+            if(isFlying == false)
+            {
+                transform.rotation = Quaternion.Lerp(transform.rotation, downRotation, rotationSmoothness * Time.deltaTime);
+            }
             MoveForward();
         }
     }
@@ -42,9 +49,8 @@ public class Player : MonoBehaviour
     }
     private void MoveVertical()
     {
-        forwardRotation = Quaternion.Euler(0, 0, 35);
+        StartCoroutine(ChangeRotationForward());
         rb.velocity = Vector3.zero;
-        transform.rotation = forwardRotation;
         rb.AddForce(Vector2.up * force, ForceMode.Force);
     }
     private void OnTriggerEnter(Collider other)
@@ -59,5 +65,18 @@ public class Player : MonoBehaviour
         treeScript.GameOver();
         uIManager.GameOver();
     }
-
+    IEnumerator ChangeRotationForward()
+    {
+        for (int i=0;  i < 45; i++)
+        {
+            forwardRotation = Quaternion.Euler(0, 0, 30);
+            transform.rotation = forwardRotation;
+            yield return new WaitForEndOfFrame();
+            if (i == 44)
+            {
+                isFlying = false;
+            }
+        }
+    }
+    
 }

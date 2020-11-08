@@ -7,7 +7,7 @@ public class TreeScript : MonoBehaviour
 {
     private int score;
     private GameObject player;
-    private float speed = 0.01f;
+    private float speed = 0.0105f;
     private bool isPlayerAlive = true;
     // Start is called before the first frame update
     void Start()
