@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private bool isAlive = true;
-    private Rigidbody rb;
+    private Rigidbody2D rb;
     private float moveForwardSpeed = 0.03f;
     private float force = 250f;
     private int score;
@@ -18,16 +18,19 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
-        treeScript = GameObject.FindGameObjectWithTag("Obstacle").GetComponent<TreeScript>();
+        rb = GetComponent<Rigidbody2D>();
+        //treeScript = GameObject.FindGameObjectWithTag("Obstacle").GetComponent<TreeScript>();
         uIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
-        Physics.gravity = new Vector3(0,20,0);
-
+        //Physics.gravity = new Vector3(0,40,0);
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (isFlying == false)
+        {
+            transform.rotation = Quaternion.Lerp(transform.rotation, downRotation, rotationSmoothness * Time.deltaTime);
+        }
         if (isAlive)
         {
             downRotation = Quaternion.Euler(0, 0, -120);
@@ -35,10 +38,6 @@ public class Player : MonoBehaviour
             {
                 isFlying = true;
                 MoveVertical();
-            }
-            if(isFlying == false)
-            {
-                transform.rotation = Quaternion.Lerp(transform.rotation, downRotation, rotationSmoothness * Time.deltaTime);
             }
             MoveForward();
         }
@@ -51,9 +50,9 @@ public class Player : MonoBehaviour
     {
         StartCoroutine(ChangeRotationForward());
         rb.velocity = Vector3.zero;
-        rb.AddForce(Vector2.up * force, ForceMode.Force);
+        rb.AddForce(Vector2.up * force);
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         isAlive = false;
         GameOver();
@@ -62,17 +61,17 @@ public class Player : MonoBehaviour
     {
         isAlive = false;
         // rb.velocity = new Vector3(0,0,0);
-        treeScript.GameOver();
+        //treeScript.GameOver();
         uIManager.GameOver();
     }
     IEnumerator ChangeRotationForward()
     {
-        for (int i=0;  i < 45; i++)
+        for (int i=0;  i < 40; i++)
         {
             forwardRotation = Quaternion.Euler(0, 0, 30);
             transform.rotation = forwardRotation;
             yield return new WaitForEndOfFrame();
-            if (i == 44)
+            if (i == 39)
             {
                 isFlying = false;
             }
