@@ -26,7 +26,6 @@ public class UIManager : MonoBehaviour
     }
     public void GameOver()
     {
-        Debug.Log("wtf");
         gameOverText.text = "Game Over";
     }
 }

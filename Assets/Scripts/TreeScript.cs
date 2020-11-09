@@ -5,14 +5,14 @@ using UnityEngine.SocialPlatforms.Impl;
 
 public class TreeScript : MonoBehaviour
 {
-    private int score;
     private GameObject player;
-    private float speed = 0.0105f;
-    private bool isPlayerAlive = true;
+    private readonly float speed = 0.014f;
+    private float startingYPosition;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
+        startingYPosition = transform.position.y;
     }
 
     // Update is called once per frame
@@ -30,20 +30,13 @@ public class TreeScript : MonoBehaviour
     }
     private void Move()
     {
-        if (transform.position.x> player.transform.position.y - 20f && isPlayerAlive)
+        if (startingYPosition > 0f && transform.position.y >= -7.8f + startingYPosition)
         {
-            if (transform.position.y > 0f)
-            {
-                transform.position = new Vector3(transform.position.x, transform.position.y - speed, transform.position.z);
-            }
-            else if (transform.position.y < 0f)
-            {
-                transform.position = new Vector3(transform.position.x, transform.position.y + speed, transform.position.z);
-            }
+            transform.position = new Vector3(transform.position.x, transform.position.y - speed, transform.position.z);
         }
-    }
-    public void GameOver()
-    {
-        isPlayerAlive = false;
+        else if (startingYPosition < 0f && transform.position.y <=  7.8f + startingYPosition)
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y + speed, transform.position.z);
+        }
     }
 }

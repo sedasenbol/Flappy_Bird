@@ -4,24 +4,20 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private GameManager gameManager;
     private bool isAlive = true;
     private Rigidbody2D rb;
-    private float moveForwardSpeed = 0.03f;
-    private float force = 250f;
-    private int score;
-    private TreeScript treeScript;
+    private readonly float moveForwardSpeed = 0.03f;
+    private readonly float force = 250f;
     private Quaternion downRotation;
     private Quaternion forwardRotation;
-    private float rotationSmoothness=1.5f;
-    private UIManager uIManager;
+    private readonly float rotationSmoothness=1.5f;
     private bool isFlying = false;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        //treeScript = GameObject.FindGameObjectWithTag("Obstacle").GetComponent<TreeScript>();
-        uIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
-        //Physics.gravity = new Vector3(0,40,0);
+        gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -60,9 +56,7 @@ public class Player : MonoBehaviour
     private void GameOver()
     {
         isAlive = false;
-        // rb.velocity = new Vector3(0,0,0);
-        //treeScript.GameOver();
-        uIManager.GameOver();
+        gameManager.GameOver();
     }
     IEnumerator ChangeRotationForward()
     {
