@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     private GameManager gameManager;
     private bool isAlive = true;
     private Rigidbody2D rb;
-    private readonly float forwardSpeed = 3f;
+    private readonly float forwardSpeed = 6f;
     private readonly float upwardsforce = 300f;
     private Quaternion downRotation;
     private Quaternion forwardRotation;
@@ -68,6 +68,14 @@ public class Player : MonoBehaviour
             GameOver();
         }
         if(other.tag == "Finish")
+        {
+            rb.velocity = Vector2.zero;
+            GameOver();
+        }
+    }
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (other.tag == "Finish")
         {
             rb.velocity = Vector2.zero;
             GameOver();

@@ -11,7 +11,7 @@ public class UIManager : MonoBehaviour
     private Text gameOverText;
     private GameObject player;
     private int score;
-    private int treeCount;
+    private int treeCount = 0;
     // Start is called before the first frame update
     void Start()
     {

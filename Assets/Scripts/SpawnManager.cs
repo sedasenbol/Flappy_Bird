@@ -35,8 +35,8 @@ public class SpawnManager : MonoBehaviour
             float upperBound = Mathf.Min(previousTreeRandomizer + 2f, 3f);
             float lowerBound = Mathf.Max(previousTreeRandomizer - 2f, -3f);
             treeRandomizer = Random.Range(lowerBound,upperBound);
-            GameObject spawnedTreeUp = Instantiate(treePrefab, new Vector3(-10+spawnedTreeCount*treeDistance, 29f + treeRandomizer, 0f), Quaternion.Euler(0, 0, 180));
-            GameObject spawnedTreeDown = Instantiate(treePrefab,new Vector3(-5+spawnedTreeCount* treeDistance, -29f + treeRandomizer, 0f),Quaternion.identity);
+            GameObject spawnedTreeUp = Instantiate(treePrefab, new Vector3(-10+spawnedTreeCount*treeDistance, 29f + treeRandomizer, 0), Quaternion.Euler(0, 0, 180));
+            GameObject spawnedTreeDown = Instantiate(treePrefab,new Vector3(-5+spawnedTreeCount* treeDistance, -29f + treeRandomizer, 0),Quaternion.identity);
             //GameObject spawnedCoin = Instantiate(coinPrefab, new Vector3(4.5f+spawnedTreeCount*treeDensity,treeRandomizer,0),Quaternion.identity);
             //spawnedCoin.transform.parent = coinContainer.transform;
             previousTreeRandomizer = treeRandomizer;
