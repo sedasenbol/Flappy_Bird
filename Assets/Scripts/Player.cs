@@ -7,17 +7,20 @@ public class Player : MonoBehaviour
     private GameManager gameManager;
     private bool isAlive = true;
     private Rigidbody2D rb;
-    private readonly float moveForwardSpeed = 0.03f;
-    private readonly float force = 250f;
+    private readonly float forwardSpeed = 3f;
+    private readonly float upwardsforce = 300f;
     private Quaternion downRotation;
     private Quaternion forwardRotation;
     private readonly float rotationSmoothness=1.5f;
     private bool isFlying = false;
+    private float gravityVelocity = 0.2f;
+    private Floor floor;
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
+        floor = GameObject.Find("Floor").GetComponent<Floor>();
     }
 
     // Update is called once per frame
@@ -25,11 +28,14 @@ public class Player : MonoBehaviour
     {
         if (isFlying == false)
         {
+            downRotation = Quaternion.Euler(0, 0, -90);
             transform.rotation = Quaternion.Lerp(transform.rotation, downRotation, rotationSmoothness * Time.deltaTime);
         }
+    }
+    private void FixedUpdate()
+    {
         if (isAlive)
         {
-            downRotation = Quaternion.Euler(0, 0, -120);
             if (Input.GetKeyDown(KeyCode.Space))
             {
                 isFlying = true;
@@ -37,27 +43,41 @@ public class Player : MonoBehaviour
             }
             MoveForward();
         }
+        //ApplyGravity();
     }
     private void MoveForward()
     {
-
-        transform.position = new Vector3(transform.position.x + moveForwardSpeed, transform.position.y, transform.position.z);
+        rb.velocity = new Vector2(forwardSpeed - rb.velocity.x, rb.velocity.y - gravityVelocity);
+        //transform.position = new Vector3(transform.position.x + moveForwardSpeed, transform.position.y, transform.position.z);
+    }
+    private void ApplyGravity()
+    {
+        rb.AddForce(Physics.gravity);
     }
     private void MoveVertical()
     {
         StartCoroutine(ChangeRotationForward());
-        rb.velocity = Vector3.zero;
-        rb.AddForce(Vector2.up * force);
+        rb.velocity = new Vector2(rb.velocity.x,0f);
+        rb.AddForce(Vector2.up * upwardsforce);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        isAlive = false;
-        GameOver();
+        if(other.tag =="Obstacle")
+        {
+            rb.velocity = new Vector2(0, -gravityVelocity * 20);
+            GameOver();
+        }
+        if(other.tag == "Finish")
+        {
+            rb.velocity = Vector2.zero;
+            GameOver();
+        }
     }
     private void GameOver()
     {
         isAlive = false;
         gameManager.GameOver();
+        floor.GameOver();
     }
     IEnumerator ChangeRotationForward()
     {
@@ -72,5 +92,4 @@ public class Player : MonoBehaviour
             }
         }
     }
-    
 }

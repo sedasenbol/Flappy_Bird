@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4478804984087817820}
   - component: {fileID: 5831697502329869100}
   - component: {fileID: 5918527764291101210}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Trees
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -97,7 +97,7 @@ MeshRenderer:
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
   m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
+  m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89

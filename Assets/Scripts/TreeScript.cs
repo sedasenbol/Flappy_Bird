@@ -6,7 +6,7 @@ using UnityEngine.SocialPlatforms.Impl;
 public class TreeScript : MonoBehaviour
 {
     private GameObject player;
-    private readonly float speed = 0.014f;
+    private readonly float speed = 0.02f;
     private float startingYPosition;
     // Start is called before the first frame update
     void Start()
