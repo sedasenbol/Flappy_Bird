@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
     }
     private void MoveForward()
     {
+
         transform.position = new Vector3(transform.position.x + moveForwardSpeed, transform.position.y, transform.position.z);
     }
     private void MoveVertical()

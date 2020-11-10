@@ -32,8 +32,8 @@ public class SpawnManager : MonoBehaviour
     {
         if (player.transform.position.x >= spawnedTreeCount * treeDistance - 20f)
         {
-            float upperBound = Mathf.Min(previousTreeRandomizer + 2f, 2f);
-            float lowerBound = Mathf.Max(previousTreeRandomizer - 2f, -2f);
+            float upperBound = Mathf.Min(previousTreeRandomizer + 2f, 3f);
+            float lowerBound = Mathf.Max(previousTreeRandomizer - 2f, -3f);
             treeRandomizer = Random.Range(lowerBound,upperBound);
             GameObject spawnedTreeUp = Instantiate(treePrefab, new Vector3(-10+spawnedTreeCount*treeDistance, 29f + treeRandomizer, 0f), Quaternion.Euler(0, 0, 180));
             GameObject spawnedTreeDown = Instantiate(treePrefab,new Vector3(-5+spawnedTreeCount* treeDistance, -29f + treeRandomizer, 0f),Quaternion.identity);
