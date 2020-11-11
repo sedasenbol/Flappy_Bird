@@ -6,7 +6,7 @@ using UnityEngine.SocialPlatforms.Impl;
 public class TreeScript : MonoBehaviour
 {
     private GameObject player;
-    private readonly float speed = 0.012f;
+    private readonly float speed = 1.35f;
     private float startingYPosition;
     // Start is called before the first frame update
     void Start()
@@ -32,11 +32,11 @@ public class TreeScript : MonoBehaviour
     {
         if (startingYPosition > 0f && transform.position.y >= -7.8f + startingYPosition)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y - speed, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y - speed * Time.deltaTime, transform.position.z);
         }
         else if (startingYPosition < 0f && transform.position.y <=  7.8f + startingYPosition)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y + speed, transform.position.z);
+            transform.position = new Vector3(transform.position.x, transform.position.y + speed * Time.deltaTime, transform.position.z);
         }
     }
 }

@@ -1,17 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     // Start is called before the first frame update
-    //private Player player;
-    private SpawnManager spawnManager;
+    private Player player;
+    //private SpawnManager spawnManager;
     private UIManager uIManager;
+    private TreeScript tree;
     void Start()
     {
-        //player = GameObject.Find("Player").GetComponent<Player>();
-        spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
+        player = GameObject.Find("Player").GetComponent<Player>();
+        //spawnManager = GameObject.Find("Spawn_Manager").GetComponent<SpawnManager>();
         uIManager = GameObject.Find("UIManager").GetComponent<UIManager>();
     }
 
@@ -23,5 +25,17 @@ public class GameManager : MonoBehaviour
     public void GameOver()
     {
         uIManager.GameOver();
+    }
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
+        player.PauseGame();
+        uIManager.PauseGame();
+    }
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+        player.ResumeGame();
+        uIManager.ResumeGame();
     }
 }

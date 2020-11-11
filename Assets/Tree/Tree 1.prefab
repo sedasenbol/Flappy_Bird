@@ -41,12 +41,12 @@ PrefabInstance:
     - target: {fileID: 4305583055077049677, guid: 2c6bc3f6206f7a748876f05540b8ef50,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 13
+      value: 3.8333306
       objectReference: {fileID: 0}
     - target: {fileID: 4305583055077049677, guid: 2c6bc3f6206f7a748876f05540b8ef50,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -36
+      value: -1.524175
       objectReference: {fileID: 0}
     - target: {fileID: 4305583055077049677, guid: 2c6bc3f6206f7a748876f05540b8ef50,
         type: 3}
@@ -97,7 +97,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 7920537cdbb8aea45abbc604cf7ae863, type: 2}
+      objectReference: {fileID: -5234678373426022088}
     - target: {fileID: 4478804984087817820, guid: 2c6bc3f6206f7a748876f05540b8ef50,
         type: 3}
       propertyPath: m_SelectedEditorRenderState
@@ -299,7 +299,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: -1
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:

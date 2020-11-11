@@ -13,8 +13,10 @@ public class Player : MonoBehaviour
     private Quaternion forwardRotation;
     private readonly float rotationSmoothness=1.5f;
     private bool isFlying = false;
-    private float gravityVelocity = 0.2f;
+    private readonly float gravityVelocity = 0.2f;
     private Floor floor;
+    private Vector3 velocity;
+    private float angularVelocity;
     // Start is called before the first frame update
     void Start()
     {
@@ -104,5 +106,17 @@ public class Player : MonoBehaviour
                 isFlying = false;
             }
         }
+    }
+    public void PauseGame()
+    {
+        velocity = rb.velocity;
+        angularVelocity = rb.angularVelocity;
+        rb.isKinematic = true;
+    }
+    public void ResumeGame()
+    {
+        rb.isKinematic = false;
+        rb.velocity = velocity;
+        rb.angularVelocity = angularVelocity;
     }
 }

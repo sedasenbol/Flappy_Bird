@@ -15,10 +15,10 @@ TagManager:
   - UI
   - 
   - 
-  - Background Image
+  - Floor
   - Tree
   - Player
-  - Floor
+  - 
   - 
   - 
   - 
@@ -43,11 +43,11 @@ TagManager:
   - name: Background
     uniqueID: 3436293041
     locked: 0
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Tree
     uniqueID: 1750850861
+    locked: 0
+  - name: Default
+    uniqueID: 0
     locked: 0
   - name: Player
     uniqueID: 485937173
