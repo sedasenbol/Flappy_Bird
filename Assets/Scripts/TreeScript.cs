@@ -8,15 +8,11 @@ public class TreeScript : MonoBehaviour
     private GameObject player;
     private readonly float speed = 0.012f;
     private float startingYPosition;
-    private MeshRenderer myMeshRenderer;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
         startingYPosition = transform.position.y;
-        myMeshRenderer = GetComponent<MeshRenderer>();
-        myMeshRenderer.sortingLayerName = "Tree";
-        myMeshRenderer.sortingOrder = 0;
     }
 
     // Update is called once per frame

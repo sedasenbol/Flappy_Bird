@@ -31,18 +31,25 @@ public class Player : MonoBehaviour
             downRotation = Quaternion.Euler(0, 0, -90);
             transform.rotation = Quaternion.Lerp(transform.rotation, downRotation, rotationSmoothness * Time.deltaTime);
         }
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            isFlying = true;
+            return;
+        }
     }
     private void FixedUpdate()
     {
-        if (isAlive)
-        {
-            if (Input.GetKeyDown(KeyCode.Space))
+            if (!isAlive)
+            { 
+                return;
+            }
+            if (isFlying)
             {
-                isFlying = true;
+                isFlying = false;
                 MoveVertical();
             }
             MoveForward();
-        }
+        
         //ApplyGravity();
     }
     private void MoveForward()
@@ -60,22 +67,19 @@ public class Player : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x,0f);
         rb.AddForce(Vector2.up * upwardsforce);
     }
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if(other.tag =="Obstacle")
+        if (!isAlive)
+        {
+            return;
+        }
+        if(other.gameObject.layer == 9)
         {
             rb.velocity = new Vector2(0, -gravityVelocity * 20);
             GameOver();
+            return;
         }
-        if(other.tag == "Finish")
-        {
-            rb.velocity = Vector2.zero;
-            GameOver();
-        }
-    }
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (other.tag == "Finish")
+        if(other.gameObject.layer == 11)
         {
             rb.velocity = Vector2.zero;
             GameOver();
