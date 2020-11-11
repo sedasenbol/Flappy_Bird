@@ -26,9 +26,9 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        SpawnTreeAndCoin();
+        SpawnTree();
     }
-    private void SpawnTreeAndCoin()
+    private void SpawnTree()
     {
         if (player.transform.position.x >= spawnedTreeCount * treeDistance - 20f)
         {
@@ -37,8 +37,6 @@ public class SpawnManager : MonoBehaviour
             treeRandomizer = Random.Range(lowerBound,upperBound);
             GameObject spawnedTreeUp = Instantiate(treePrefab, new Vector3(-10+spawnedTreeCount*treeDistance, 29f + treeRandomizer, 0), Quaternion.Euler(0, 0, 180));
             GameObject spawnedTreeDown = Instantiate(treePrefab,new Vector3(-5+spawnedTreeCount* treeDistance, -29f + treeRandomizer, 0),Quaternion.identity);
-            //GameObject spawnedCoin = Instantiate(coinPrefab, new Vector3(4.5f+spawnedTreeCount*treeDensity,treeRandomizer,0),Quaternion.identity);
-            //spawnedCoin.transform.parent = coinContainer.transform;
             previousTreeRandomizer = treeRandomizer;
             spawnedTreeUp.transform.parent = treeContainer.transform;
             spawnedTreeDown.transform.parent = treeContainer.transform;

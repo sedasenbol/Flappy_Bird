@@ -7,7 +7,7 @@ public class Player : MonoBehaviour
     private GameManager gameManager;
     private bool isAlive = true;
     private Rigidbody2D rb;
-    private readonly float forwardSpeed = 6f;
+    public readonly float forwardSpeed = 3f;
     private readonly float upwardsforce = 300f;
     private Quaternion downRotation;
     private Quaternion forwardRotation;
@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
     }
     private void MoveForward()
     {
-        rb.velocity = new Vector2(forwardSpeed - rb.velocity.x, rb.velocity.y - gravityVelocity);
+        rb.velocity = new Vector2(forwardSpeed, rb.velocity.y - gravityVelocity);
         //transform.position = new Vector3(transform.position.x + moveForwardSpeed, transform.position.y, transform.position.z);
     }
     private void ApplyGravity()
@@ -89,12 +89,13 @@ public class Player : MonoBehaviour
     }
     IEnumerator ChangeRotationForward()
     {
-        for (int i=0;  i < 40; i++)
+        int TotalFrame = 90;
+        for (int i=0;  i < TotalFrame; i++)
         {
             forwardRotation = Quaternion.Euler(0, 0, 30);
             transform.rotation = forwardRotation;
             yield return new WaitForEndOfFrame();
-            if (i == 39)
+            if (i == TotalFrame - 1)
             {
                 isFlying = false;
             }
