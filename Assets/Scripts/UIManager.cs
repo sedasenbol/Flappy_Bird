@@ -73,7 +73,7 @@ public class UIManager : MonoBehaviour
     }
     private void UpdateScore()
     {
-        if (player.transform.position.x >= 1f + treeCount * 4)
+        if (player.transform.position.x >= 2f + treeCount * 5)
         {
             score++;
             treeCount++;

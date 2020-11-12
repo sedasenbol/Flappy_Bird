@@ -68,22 +68,15 @@ public class Player : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D other)
     {
-        if (!isAlive)
+        if(other.gameObject.layer == 8 && isAlive)
         {
-            return;
-        }
-        if(other.gameObject.layer == 8)
-        {
+            rb.velocity = new Vector2(0, -gravityVelocity * 20);
             GameOver();
         }
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (!isAlive)
-        {
-            return;
-        }
-        if (other.gameObject.layer == 9)
+        if (other.gameObject.layer == 9 && isAlive)
         {
             rb.velocity = new Vector2(0, -gravityVelocity * 20);
             GameOver();
