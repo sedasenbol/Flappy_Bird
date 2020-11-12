@@ -15,6 +15,10 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(player.transform.position.x+1.5f, 0f, player.transform.position.z-5f);
+        transform.position = new Vector3(player.transform.position.x + 1.5f, 0f, player.transform.position.z - 5f);
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
     }
 }
