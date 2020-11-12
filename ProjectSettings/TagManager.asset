@@ -16,7 +16,7 @@ TagManager:
   - 
   - 
   - Floor
-  - Tree
+  - Pipe
   - Player
   - 
   - 
@@ -43,12 +43,18 @@ TagManager:
   - name: Background
     uniqueID: 3436293041
     locked: 0
-  - name: Tree
-    uniqueID: 1750850861
+  - name: Background_Canvas
+    uniqueID: 487343901
     locked: 0
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Pipe
+    uniqueID: 1750850861
+    locked: 0
   - name: Player
     uniqueID: 485937173
+    locked: 0
+  - name: UI
+    uniqueID: 4028457481
     locked: 0

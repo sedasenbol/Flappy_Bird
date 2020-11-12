@@ -354,6 +354,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Score_Text
       objectReference: {fileID: 0}
+    - target: {fileID: 3835941340278621986, guid: 46bf663988289b44d8f5667dcec5ca4c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3835941340278621987, guid: 46bf663988289b44d8f5667dcec5ca4c,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -422,12 +427,12 @@ PrefabInstance:
     - target: {fileID: 3835941340278621987, guid: 46bf663988289b44d8f5667dcec5ca4c,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: -1810.6666
+      value: -1812.0211
       objectReference: {fileID: 0}
     - target: {fileID: 3835941340278621987, guid: 46bf663988289b44d8f5667dcec5ca4c,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: -532.9864
+      value: -512.006
       objectReference: {fileID: 0}
     - target: {fileID: 3835941340278621987, guid: 46bf663988289b44d8f5667dcec5ca4c,
         type: 3}

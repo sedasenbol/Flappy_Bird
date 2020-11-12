@@ -84,6 +84,7 @@ public class UIManager : MonoBehaviour
         gameOverText.gameObject.SetActive(true);
         replayButton.gameObject.SetActive(true);
         pauseButton.gameObject.SetActive(false);
+
     }
     public void PauseGame()
     {

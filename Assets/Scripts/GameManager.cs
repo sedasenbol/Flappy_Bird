@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     private Player player;
     //private SpawnManager spawnManager;
     private UIManager uIManager;
-    private TreeScript tree;
     void Start()
     {
         player = GameObject.Find("Player").GetComponent<Player>();
