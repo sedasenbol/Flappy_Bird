@@ -6,13 +6,9 @@ public class SpawnManager : MonoBehaviour
 {
     private float treeDistance = 5f;
     [SerializeField]
-    private GameObject treePrefab;
+    private GameObject pipePrefab;
     [SerializeField]
-    private GameObject coinPrefab;
-    [SerializeField]
-    private GameObject treeContainer;
-    [SerializeField]
-    private GameObject coinContainer;
+    private GameObject pipeContainer;
     private GameObject player;
     private int spawnedTreeCount=0;
     private float previousTreeRandomizer = 0f;
@@ -35,11 +31,11 @@ public class SpawnManager : MonoBehaviour
             float upperBound = Mathf.Min(previousTreeRandomizer + 2.5f, 2.5f); 
             float lowerBound = Mathf.Max(previousTreeRandomizer - 2.5f, -2.5f);
             treeRandomizer = Random.Range(lowerBound,upperBound);
-            GameObject spawnedTreeUp = Instantiate(treePrefab, new Vector3(1f+spawnedTreeCount * treeDistance, 16 + treeRandomizer, 0), Quaternion.Euler(0, 0, 180));
-            GameObject spawnedTreeDown = Instantiate(treePrefab,new Vector3(1f+spawnedTreeCount * treeDistance, -16 + treeRandomizer, 0),Quaternion.identity);
+            GameObject spawnedTreeUp = Instantiate(pipePrefab, new Vector3(1f+spawnedTreeCount * treeDistance, 16 + treeRandomizer, 0), Quaternion.Euler(0, 0, 180));
+            GameObject spawnedTreeDown = Instantiate(pipePrefab, new Vector3(1f+spawnedTreeCount * treeDistance, -16 + treeRandomizer, 0),Quaternion.identity);
             previousTreeRandomizer = treeRandomizer;
-            spawnedTreeUp.transform.parent = treeContainer.transform;
-            spawnedTreeDown.transform.parent = treeContainer.transform;
+            spawnedTreeUp.transform.parent = pipeContainer.transform;
+            spawnedTreeDown.transform.parent = pipeContainer.transform;
             spawnedTreeCount++;
         }
     }

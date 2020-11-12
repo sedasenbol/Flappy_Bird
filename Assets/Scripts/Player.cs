@@ -17,9 +17,11 @@ public class Player : MonoBehaviour
     private Floor floor;
     private Vector3 velocity;
     private float angularVelocity;
+    private AudioSource wingSound;
     // Start is called before the first frame update
     void Start()
     {
+        wingSound = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         floor = GameObject.Find("Floor").GetComponent<Floor>();
@@ -36,6 +38,7 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space))
         {
             isFlying = true;
+            wingSound.Play();
             return;
         }
     }

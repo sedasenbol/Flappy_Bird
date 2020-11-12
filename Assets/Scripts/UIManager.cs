@@ -24,12 +24,14 @@ public class UIManager : MonoBehaviour
     [SerializeField]
     private Button resumeButton;
     private float timeLeft = 3f;
+    private AudioSource scoreSound;
     // Start is called before the first frame update
     void Start()
     {
         Scene scene = SceneManager.GetActiveScene();
         if (scene.name == "Game")
         {
+            scoreSound = GetComponent<AudioSource>();
             player = GameObject.Find("Player");
             replayButton.gameObject.SetActive(false);
             playButton.gameObject.SetActive(false);
@@ -75,6 +77,7 @@ public class UIManager : MonoBehaviour
         {
             score++;
             treeCount++;
+            scoreSound.Play(0);
         }
         scoreText.text =score.ToString();
     }
