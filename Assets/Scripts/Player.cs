@@ -35,7 +35,7 @@ public class Player : MonoBehaviour
             downRotation = Quaternion.Euler(0, 0, -90);
             transform.rotation = Quaternion.Lerp(transform.rotation, downRotation, rotationSmoothness * Time.deltaTime);
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) && isAlive)
         {
             isFlying = true;
             wingSound.Play();
@@ -54,17 +54,11 @@ public class Player : MonoBehaviour
                 MoveVertical();
             }
             MoveForward();
-        
-        //ApplyGravity();
     }
     private void MoveForward()
     {
         rb.velocity = new Vector2(forwardSpeed, rb.velocity.y - gravityVelocity);
         //transform.position = new Vector3(transform.position.x + moveForwardSpeed, transform.position.y, transform.position.z);
-    }
-    private void ApplyGravity()
-    {
-        rb.AddForce(Physics.gravity);
     }
     private void MoveVertical()
     {
@@ -78,15 +72,20 @@ public class Player : MonoBehaviour
         {
             return;
         }
-        if(other.gameObject.layer == 9)
+        if(other.gameObject.layer == 8)
         {
-            rb.velocity = new Vector2(0, -gravityVelocity * 20);
             GameOver();
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!isAlive)
+        {
             return;
         }
-        if(other.gameObject.layer == 11)
+        if (other.gameObject.layer == 9)
         {
-            rb.velocity = Vector2.zero;
+            rb.velocity = new Vector2(0, -gravityVelocity * 20);
             GameOver();
         }
     }

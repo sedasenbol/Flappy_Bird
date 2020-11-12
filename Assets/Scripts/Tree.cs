@@ -6,13 +6,10 @@ using UnityEngine.SocialPlatforms.Impl;
 public class Tree : MonoBehaviour
 {
     private GameObject player;
-    private readonly float speed = 135f;
-    private float startingYPosition;
     // Start is called before the first frame update
     void Start()
     {
         player = GameObject.Find("Player");
-        startingYPosition = transform.position.y;
     }
 
     // Update is called once per frame
