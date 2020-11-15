@@ -25,8 +25,7 @@ public class UIManager : MonoBehaviour
     private Button resumeButton;
     private float timeLeft = 3f;
     private AudioSource scoreSound;
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         Scene scene = SceneManager.GetActiveScene();
         if (scene.name == "Game")
@@ -41,9 +40,7 @@ public class UIManager : MonoBehaviour
             resumeButton.gameObject.SetActive(false);
         }
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         Scene scene = SceneManager.GetActiveScene();
         if (scene.name == "CountDown")

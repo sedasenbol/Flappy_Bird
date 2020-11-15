@@ -18,17 +18,14 @@ public class Player : MonoBehaviour
     private Vector3 velocity;
     private float angularVelocity;
     private AudioSource wingSound;
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         wingSound = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody2D>();
         gameManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
         floor = GameObject.Find("Floor").GetComponent<Floor>();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if (isFlying == false)
         {

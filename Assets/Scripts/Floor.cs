@@ -8,20 +8,15 @@ public class Floor : MonoBehaviour
     private bool playerIsDead = false;
     private Player player;
     private float forwardSpeed;
-    //private readonly float moveForwardSpeed = 0.03f;
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.Find("Player").GetComponent<Player>();
         forwardSpeed = player.forwardSpeed;
     }
-
-    // Update is called once per frame
-    void FixedUpdate()
+    private void FixedUpdate()
     {
-        //transform.position = new Vector3(player.transform.position.x + 1, transform.position.y,transform.position.z);
-        if(playerIsDead == false)
+        if(!playerIsDead)
         {
             rb.velocity = new Vector2(forwardSpeed, 0);
         }
